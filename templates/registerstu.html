@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <title>Document</title>
+  <style>
+
+    .logout{
+      position: absolute;
+    top: 11px;
+    right: 300px;
+    font-size: 18px;
+    }
+    body{
+      font-family: 'Verdana', sans-serif;
+      margin: 20px;
+      background-color: #2d2d2d;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .logo {
+      cursor: pointer;
+      max-width: 180px; /* Increased by 50px */
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 40px;
+    }
+
+    form {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    textarea {
+      font-family: monospace;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      margin-left: 50px;
+      background-color: #4CAF50;
+      border: none;
+    }
+
+    .opt {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    a {
+      color: #1E90FF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #datetime {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #ffffff;
+      font-size: 20px;
+    }
+
+    .bgblack{
+      background-color: #2d2d2d;
+    }
+    
+    .shadow-gg{
+      
+      box-shadow: 0 6px 20px 0 dimgray, 0 6px 20px 0 dimgray;
+        }
+  </style>
+</head>
+
+<body>
+  <img class="logo" src="https://lms-kjsce.somaiya.edu/pluginfile.php/1/theme_essential/logo/1702638405/engg-logo.png" alt="not available" onclick="refreshPage()">
+  <h1 style="margin-top : -40px">N-Code_Coding Platform</h1>
+  
+  <span class="logout">
+    <a href="/logout">
+      Logout
+    </a>
+  </span>
+  <div id="datetime"></div>
+
+
+  <div class="bgblack container mt-6" >
+    <form class="bgblack col-6 mx-auto card p-3 shadow-gg mt-5" style="color:white;" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      {% if messages %}
+      {{message.tags}}
+
+      <div class="alert alert-primary" role="alert">
+        {% for message in messages %}
+        {{message}}
+        {%endfor%}
+    </div>
+    {%endif%}
+
+      <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <input type="text" class="form-control" name="stu_first_name" placeholder="First Name">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input type="text" class="form-control" name="stu_last_name" placeholder="Last Name">
+      </div><div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" name="stu_username" placeholder="Username">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Roll No.</label>
+        <input type="integer" class="form-control" name="rollno" placeholder="Roll No.">
+      </div>
+
+
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"
+          aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" name = "password" class="form-control" placeholder="Password" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3">
+        Already Signed up?<a href="/login/">Login</a>
+      </div>
+      <button type="submit"style = "margin-right: 50px;" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  </div>
+
+
+
+
+</body>
+
+</html>

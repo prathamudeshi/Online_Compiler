@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PyCompiler</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+
+    .logout{
+      position: absolute;
+    top: 11px;
+    right: 300px;
+    font-size: 18px;
+    }
+    body{
+      font-family: 'Verdana', sans-serif;
+      margin: 20px;
+      background-color: #2d2d2d;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .logo {
+      cursor: pointer;
+      max-width: 180px; /* Increased by 50px */
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 40px;
+    }
+
+    form {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    textarea {
+      font-family: monospace;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      margin-left: 50px;
+      background-color: #4CAF50;
+      border: none;
+    }
+
+    .opt {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    a {
+      color: #1E90FF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #datetime {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #ffffff;
+      font-size: 20px;
+    }
+
+    .bgblack{
+      background-color: #2d2d2d;
+    }
+    
+    .shadow-lg{
+      
+  box-shadow: 0 6px 20px 0 dimgray, 0 6px 20px 0 dimgray;
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="https://lms-kjsce.somaiya.edu/pluginfile.php/1/theme_essential/logo/1702638405/engg-logo.png" alt="not available" onclick="refreshPage()">
+  <h1 style="margin-top : -40px">N-Code_Coding Platform</h1>
+  
+  <span class="logout">
+    <a href="/logout">
+      Logout
+    </a>
+  </span>
+  <div id="datetime"></div>
+    
+
+<div class="bgblack container mt-6">
+    <form class = "bgblack col-6 mx-auto card p-3 shadow-lg mt-5" method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+        {% if messages %}
+        {{message.tags}}
+  
+        <div class="alert alert-primary" role="alert">
+          {% for message in messages %}
+          {{message}}
+          {%endfor%}
+      </div>
+      {%endif%}
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" name = "password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary" style = "margin-right: 50px;">Submit</button>
+      </form>
+    </div>
+</div>
+
+<script>
+  function updateDateTime() {
+    var now = new Date();
+    var datetimeElement = document.getElementById("datetime");
+    datetimeElement.innerHTML = now.toLocaleString();
+  }
+
+  updateDateTime(); // Initial call to display current date and time
+  setInterval(updateDateTime, 1000); // Update every 1000 milliseconds (1 second)
+</script>
+</body>
+</html>
